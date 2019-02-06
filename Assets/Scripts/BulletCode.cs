@@ -8,7 +8,7 @@ public class BulletCode : MonoBehaviour {
 	void Start ()
 	{
 		Destroy(gameObject, 5);
-		Invoke("AddGravity", 2);
+		//Invoke("AddGravity", 3);
 	}
 	
 	// Update is called once per frame
