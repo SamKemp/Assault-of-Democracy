@@ -14,7 +14,7 @@ public class BulletCode : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
-		this.GetComponent<Rigidbody>().AddForce(transform.forward * 5);
+		this.GetComponent<Rigidbody>().AddForce(transform.forward * 10);
 	}
 
 	void AddGravity()
