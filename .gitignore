@@ -14,11 +14,10 @@
 # Build directory
 Build/
 
-# Intellij cache directory
+# IDE directorys
 .idea/
-
-# Visual Studio cache directory
 .vs/
+.vscode/
 
 # Gradle cache directory
 .gradle/
