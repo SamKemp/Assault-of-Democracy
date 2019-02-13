@@ -11,23 +11,23 @@ public class FireGun : MonoBehaviour
 	public Transform BulletSpawn;
 	public GameObject AmmoCount;
 
-	private int Bullets = 10;
-	private int initialBullets;
+	private int _bullets = 30;
+	private int _initialBullets;
 	
 	// Use this for initialization
 	void Start ()
 	{
-		initialBullets = Bullets;		
+		_initialBullets = _bullets;		
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-		if (Input.GetKeyDown(KeyCode.Mouse0))
+		if (Input.GetKey(KeyCode.Mouse0) || Input.GetKey(KeyCode.JoystickButton10))
 		{
-			if(Bullets > 0)
+			if(_bullets > 0)
 			{
-				Bullets--;
+				_bullets--;
 
 				GameObject bullet = (GameObject)Instantiate(BulletPrefab, BulletSpawn.position, BulletSpawn.rotation);
 				bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 10;
@@ -35,9 +35,9 @@ public class FireGun : MonoBehaviour
 		}
 		if (Input.GetKeyDown(KeyCode.R))
 		{
-			Bullets = initialBullets;
+			_bullets = _initialBullets;
 		}
 
-		AmmoCount.GetComponent<TextMesh>().text = Bullets.ToString();
+		AmmoCount.GetComponent<TextMesh>().text = _bullets.ToString();
 	}
 }

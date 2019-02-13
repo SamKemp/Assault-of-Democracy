@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR;
+using Random = UnityEngine.Random;
 
 public class BulletCode : MonoBehaviour {
 
@@ -12,18 +14,18 @@ public class BulletCode : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update ()
+	void FixedUpdate ()
 	{
-		this.GetComponent<Rigidbody>().AddForce(transform.forward * 10);
+		this.GetComponent<Rigidbody>().AddForce(transform.forward);
 	}
 	
 	void OnCollisionEnter(Collision collision)
 	{
-		Debug.Log("Bullet collided");
 		Destroy(gameObject);
+
 		if (collision.gameObject.CompareTag("killable"))
 		{
-			Destroy(collision.gameObject);
+			collision.gameObject.SendMessage("Hit");
 		}
 	}
 }
