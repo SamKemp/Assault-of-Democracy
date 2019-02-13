@@ -7,6 +7,6 @@ public class KillSelf : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
 	{
-		Destroy(gameObject, 20);
+		Destroy(gameObject, 2);
 	}
 }

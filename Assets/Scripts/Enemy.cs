@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
 	{
 		if (!Dummy)
 		{
-			transform.position = Vector3.MoveTowards(transform.position, Stockpile.transform.position, Time.deltaTime * 0.1f);
+			transform.position = Vector3.MoveTowards(transform.position, Stockpile.transform.position, Time.deltaTime * 1.5f);
 		}
 		
 		if (_health <= 0)
@@ -48,6 +48,12 @@ public class Enemy : MonoBehaviour
 	void Hit()
 	{
 		_health -= 10;
-		Debug.Log(gameObject.name + " got hit | " + _health);
+		Debug.Log(gameObject.name + " got shot | " + _health);
+	}
+	
+	void HitSword()
+	{
+		_health = 0;
+		Debug.Log(gameObject.name + " got sworded | " + _health);
 	}
 }

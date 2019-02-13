@@ -14,7 +14,7 @@ public class EnemyFactory : MonoBehaviour
 	public GameObject EnemySpawn4;
 	public GameObject EnemySpawn5;
 	
-	private int _spawnInterval = 5;
+	private float _spawnInterval = 1;
 
 	private Vector3 _spawnLocation;
 	private Quaternion _spawnRotation;
@@ -27,7 +27,7 @@ public class EnemyFactory : MonoBehaviour
 
 	void SpawnEnemy()
 	{
-		switch (Random.Range(0, 5))
+		switch (Random.Range(0, 3))
 		{
 			case 0:
 				_spawnLocation = EnemySpawn0.transform.position;
@@ -60,6 +60,8 @@ public class EnemyFactory : MonoBehaviour
 		newEnemy.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
 		
 		Debug.Log("New enemy spawned");
+
+		_spawnInterval -= 0.01f;
 		
 		// Restart spawn timer
 		Invoke("SpawnEnemy", _spawnInterval);

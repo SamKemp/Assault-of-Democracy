@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using Valve.VR;
 
 public class FireGun : MonoBehaviour
 {
@@ -19,18 +20,18 @@ public class FireGun : MonoBehaviour
 	{
 		_initialBullets = _bullets;		
 	}
-	
+
 	// Update is called once per frame
 	void Update ()
 	{
-		if (Input.GetKey(KeyCode.Mouse0) || Input.GetKey(KeyCode.JoystickButton10))
+		if (Input.GetKey(KeyCode.Mouse0));
 		{
-			if(_bullets > 0)
+			//if(_bullets > 0)
 			{
-				_bullets--;
+				//_bullets--;
 
-				GameObject bullet = (GameObject)Instantiate(BulletPrefab, BulletSpawn.position, BulletSpawn.rotation);
-				bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 10;
+				//GameObject bullet = (GameObject)Instantiate(BulletPrefab, BulletSpawn.position, BulletSpawn.rotation);
+				//bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 10;
 			}
 		}
 		if (Input.GetKeyDown(KeyCode.R))
