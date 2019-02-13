@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Valve.VR;
 
 public class BulletCode : MonoBehaviour {
 
@@ -8,7 +9,6 @@ public class BulletCode : MonoBehaviour {
 	void Start ()
 	{
 		Destroy(gameObject, 5);
-		//Invoke("AddGravity", 3);
 	}
 	
 	// Update is called once per frame
@@ -16,9 +16,14 @@ public class BulletCode : MonoBehaviour {
 	{
 		this.GetComponent<Rigidbody>().AddForce(transform.forward * 10);
 	}
-
-	void AddGravity()
+	
+	void OnCollisionEnter(Collision collision)
 	{
-		this.GetComponent<Rigidbody>().useGravity = true;
+		Debug.Log("Bullet collided");
+		Destroy(gameObject);
+		if (collision.gameObject.CompareTag("killable"))
+		{
+			Destroy(collision.gameObject);
+		}
 	}
 }
