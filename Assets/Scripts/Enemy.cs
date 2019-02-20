@@ -29,10 +29,14 @@ public class Enemy : MonoBehaviour
 		if(_hitStockPile)
 		{
 			transform.position = Vector3.MoveTowards(transform.position, Escape.transform.position, Time.deltaTime * 1.5f);
+			transform.LookAt(Escape.transform);
+			transform.eulerAngles = new Vector3(90, transform.eulerAngles.y, transform.eulerAngles.z);
 		}
 		else
 		{
 			transform.position = Vector3.MoveTowards(transform.position, MoveTowards.transform.position, Time.deltaTime * 1.5f);
+			transform.LookAt(MoveTowards.transform);
+			transform.eulerAngles = new Vector3(90, transform.eulerAngles.y, transform.eulerAngles.z);
 		}
 		
 		if (_health <= 0)
@@ -43,6 +47,7 @@ public class Enemy : MonoBehaviour
 			{
 				GameObject newStockpilePart = (GameObject)Instantiate(StockpilePart, this.transform.position, this.transform.rotation);
 				newStockpilePart.GetComponent<StockpilePart>().Stockpile = Stockpile;
+				newStockpilePart.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
 			}
 
 			foreach (Transform t in this.transform)
@@ -62,13 +67,11 @@ public class Enemy : MonoBehaviour
 	void Hit()
 	{
 		_health -= 10;
-		Debug.Log(gameObject.name + " got shot | " + _health);
 	}
 	
 	void HitSword()
 	{
 		_health = 0;
-		Debug.Log(gameObject.name + " got sworded | " + _health);
 	}
 
 	void HitStockpile()

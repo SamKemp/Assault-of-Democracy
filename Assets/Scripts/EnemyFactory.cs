@@ -71,8 +71,6 @@ public class EnemyFactory : MonoBehaviour
 		newEnemy.GetComponent<Enemy>().Escape = _spawnLocationObj;
 		newEnemy.GetComponent<Enemy>().Stockpile = Stockpile;
 		newEnemy.GetComponent<Enemy>().StockpilePart = StockpilePart;
-		
-		Debug.Log("New enemy spawned");
 
 		_spawnInterval -= 0.01f;
 		
