@@ -7,6 +7,8 @@ public class Enemy : MonoBehaviour
 {
 	private bool _hitStockPile = false;
 
+	public GameObject StockpilePart;
+
 	public GameObject Stockpile;
 
 	public GameObject Escape;
