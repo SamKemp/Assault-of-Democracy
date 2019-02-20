@@ -21,11 +21,14 @@ public class BulletCode : MonoBehaviour {
 	
 	void OnCollisionEnter(Collision collision)
 	{
-		Destroy(gameObject);
-
-		if (collision.gameObject.CompareTag("killable"))
+		//if (!collision.gameObject.CompareTag("bullet"))
 		{
-			collision.gameObject.SendMessage("Hit");
+			Destroy(gameObject);
+	
+			if (collision.gameObject.CompareTag("killable"))
+			{
+				collision.gameObject.SendMessage("Hit");
+			}
 		}
 	}
 }

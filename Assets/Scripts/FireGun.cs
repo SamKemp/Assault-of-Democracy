@@ -12,8 +12,11 @@ public class FireGun : MonoBehaviour
 	public Transform BulletSpawn;
 	public GameObject AmmoCount;
 
-	private int _bullets = 30;
+	private int _bullets = 100;
 	private int _initialBullets;
+
+	private bool _automatic = false;
+	public bool BulletsMatter = false;
 	
 	// Use this for initialization
 	void Start ()
@@ -24,21 +27,43 @@ public class FireGun : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		if (Input.GetKeyDown(KeyCode.Mouse0))
+		if (_automatic)
 		{
-			if(_bullets > 0)
+			if (Input.GetButton("Button Fire"))
 			{
-				_bullets--;
-
-				GameObject bullet = (GameObject)Instantiate(BulletPrefab, BulletSpawn.position, BulletSpawn.rotation);
-				bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 10;
+				FireBullet();
 			}
 		}
-		if (Input.GetKeyDown(KeyCode.R))
+		else
+		{
+			if (Input.GetButtonDown("Button Fire"))
+			{
+				FireBullet();
+			}
+		}
+		
+		if (Input.GetButtonDown("Button Auto"))
+		{
+			_automatic = !_automatic;
+		}
+		
+		if (Input.GetButtonDown("Button Reload"))
 		{
 			_bullets = _initialBullets;
 		}
 
 		AmmoCount.GetComponent<TextMesh>().text = _bullets.ToString();
+	}
+
+	void FireBullet()
+	{
+		if(_bullets > 0)
+		{
+			if(BulletsMatter)
+				_bullets--;
+	
+			GameObject bullet = (GameObject)Instantiate(BulletPrefab, BulletSpawn.position, BulletSpawn.rotation);
+			bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 10;
+		}
 	}
 }
