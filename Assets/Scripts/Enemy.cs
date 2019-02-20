@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour
 	public GameObject StockpilePart;
 
 	public GameObject Stockpile;
+	
+	public GameObject MoveTowards;
 
 	public GameObject Escape;
 	
@@ -18,7 +20,7 @@ public class Enemy : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		Stockpile = GameObject.Find("EnemyMoveTowards");
+		MoveTowards = GameObject.Find("EnemyMoveTowards");
 	}
 	
 	// Update is called once per frame
@@ -30,16 +32,21 @@ public class Enemy : MonoBehaviour
 		}
 		else
 		{
-			transform.position = Vector3.MoveTowards(transform.position, Stockpile.transform.position, Time.deltaTime * 1.5f);
+			transform.position = Vector3.MoveTowards(transform.position, MoveTowards.transform.position, Time.deltaTime * 1.5f);
 		}
 		
 		if (_health <= 0)
 		{
 			this.transform.parent = null;
+			
+			if(_hitStockPile)
+			{
+				GameObject newStockpilePart = (GameObject)Instantiate(StockpilePart, this.transform.position, this.transform.rotation);
+				newStockpilePart.GetComponent<StockpilePart>().Stockpile = Stockpile;
+			}
 
 			foreach (Transform t in this.transform)
 			{
-				//t.parent = GameObject.Find("BodyParts-Storage").transform;
 				t.parent = null;
 				t.gameObject.AddComponent<KillSelf>();
 				t.gameObject.AddComponent<BoxCollider>();

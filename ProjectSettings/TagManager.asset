@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - killable
+  - Fire
+  - projectile
+  - FxTemporaire
+  - player
   layers:
   - Default
   - TransparentFX

@@ -32,4 +32,10 @@ public class Stockpile : MonoBehaviour
             collision.gameObject.SendMessage("HitStockpile");
         }
     }
+
+    void PartRecovered()
+    {
+        GlobalVariables.StockpileHealth += 10;
+        _stockpileObj.transform.position = new Vector3(0, _stockpileObj.transform.position.y +0.05f, 0);
+    }
 }

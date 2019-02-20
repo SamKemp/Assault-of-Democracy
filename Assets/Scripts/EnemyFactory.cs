@@ -5,6 +5,9 @@ using UnityEngine;
 public class EnemyFactory : MonoBehaviour
 {
 
+	public GameObject Stockpile;
+	public GameObject StockpilePart;
+	
 	public GameObject EnemyPrefab;
 	
 	public GameObject EnemySpawn0;
@@ -28,7 +31,7 @@ public class EnemyFactory : MonoBehaviour
 
 	void SpawnEnemy()
 	{
-		switch (Random.Range(0, 3))
+		switch (Random.Range(0, 6))
 		{
 			case 0:
 				_spawnLocationObj = EnemySpawn0;
@@ -66,6 +69,8 @@ public class EnemyFactory : MonoBehaviour
 		//newEnemy.transform.SetParent(gameObject.transform);
 		newEnemy.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
 		newEnemy.GetComponent<Enemy>().Escape = _spawnLocationObj;
+		newEnemy.GetComponent<Enemy>().Stockpile = Stockpile;
+		newEnemy.GetComponent<Enemy>().StockpilePart = StockpilePart;
 		
 		Debug.Log("New enemy spawned");
 
