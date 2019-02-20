@@ -26,12 +26,12 @@ public class FireGun : MonoBehaviour
 	{
 		if (Input.GetKey(KeyCode.Mouse0));
 		{
-			//if(_bullets > 0)
+			if(_bullets > 0)
 			{
 				//_bullets--;
 
-				//GameObject bullet = (GameObject)Instantiate(BulletPrefab, BulletSpawn.position, BulletSpawn.rotation);
-				//bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 10;
+				GameObject bullet = (GameObject)Instantiate(BulletPrefab, BulletSpawn.position, BulletSpawn.rotation);
+				bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 10;
 			}
 		}
 		if (Input.GetKeyDown(KeyCode.R))
