@@ -4,16 +4,21 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.XR;
 
-public class ifVR : MonoBehaviour
+public class GlobalVariables : MonoBehaviour
 {
 	public bool VrEnabled;
 
 	public GameObject VRCamera;
 	public GameObject Camera;
 
+	public static int StockpileHealth = 200;
+	public static int StockpileMaxHealth;
+
 	// Use this for initialization
 	void Start ()
 	{
+		StockpileMaxHealth = StockpileHealth;
+		
 		XRSettings.enabled = VrEnabled;
 
 		if (XRSettings.enabled)
@@ -29,7 +34,8 @@ public class ifVR : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+	{
 		
 	}
 }

@@ -5,10 +5,11 @@ using UnityEngine.Serialization;
 
 public class Enemy : MonoBehaviour
 {
-
-	public bool Dummy = false;
+	private bool _hitStockPile = false;
 
 	public GameObject Stockpile;
+
+	public GameObject Escape;
 	
 	private int _health = 100;
 
@@ -21,7 +22,11 @@ public class Enemy : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		if (!Dummy)
+		if(_hitStockPile)
+		{
+			transform.position = Vector3.MoveTowards(transform.position, Escape.transform.position, Time.deltaTime * 1.5f);
+		}
+		else
 		{
 			transform.position = Vector3.MoveTowards(transform.position, Stockpile.transform.position, Time.deltaTime * 1.5f);
 		}
@@ -55,5 +60,10 @@ public class Enemy : MonoBehaviour
 	{
 		_health = 0;
 		Debug.Log(gameObject.name + " got sworded | " + _health);
+	}
+
+	void HitStockpile()
+	{
+		_hitStockPile = true;
 	}
 }

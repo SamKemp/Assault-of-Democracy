@@ -18,17 +18,17 @@ public class FireGun : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		_initialBullets = _bullets;		
+		_initialBullets = _bullets;
 	}
 
 	// Update is called once per frame
 	void Update ()
 	{
-		if (Input.GetKey(KeyCode.Mouse0));
+		if (Input.GetKeyDown(KeyCode.Mouse0))
 		{
 			if(_bullets > 0)
 			{
-				//_bullets--;
+				_bullets--;
 
 				GameObject bullet = (GameObject)Instantiate(BulletPrefab, BulletSpawn.position, BulletSpawn.rotation);
 				bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 10;
