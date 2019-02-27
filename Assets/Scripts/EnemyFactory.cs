@@ -17,7 +17,7 @@ public class EnemyFactory : MonoBehaviour
 	public GameObject EnemySpawn4;
 	public GameObject EnemySpawn5;
 	
-	private float _spawnInterval = 2;
+	private float _spawnInterval = 1;
 
 	private GameObject _spawnLocationObj;
 	private Vector3 _spawnLocation;

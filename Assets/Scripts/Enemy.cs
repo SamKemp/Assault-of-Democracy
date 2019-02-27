@@ -15,12 +15,18 @@ public class Enemy : MonoBehaviour
 
 	public GameObject Escape;
 	
-	private int _health = 100;
+	private int _health = 0;
 
 	// Use this for initialization
 	void Start ()
 	{
 		MoveTowards = GameObject.Find("EnemyMoveTowards");
+	}
+	
+	// Fixed Update is called once per fixed frame
+	void FixedUpdate()
+	{
+		//NOOP
 	}
 	
 	// Update is called once per frame
@@ -57,9 +63,7 @@ public class Enemy : MonoBehaviour
 				t.gameObject.AddComponent<BoxCollider>();
 				t.gameObject.AddComponent<Rigidbody>().useGravity = true;
 			}
-			
-			//GameObject deadDummy = (GameObject)Instantiate(TestDummyDeath, this.transform.position, this.transform.rotation);
-			//deadDummy.transform.localScale = this.transform.localScale;
+
 			Destroy(gameObject);
 		}
 	}
